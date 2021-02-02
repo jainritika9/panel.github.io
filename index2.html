@@ -1,0 +1,131 @@
+<!Doctype html>
+<html lang=en>
+
+<head>
+  <meta charset="utf-8">
+  <title>Un-Stock Buy</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/new.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body onmousewheel="myscroll(event)">
+  <div id="panel1" class="panel">
+    <div id="header">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li style="float:right"><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <h3>Sale or Buy</h3>
+    <p>Dead Inventory</p>
+    <div id="input">
+      <select placeholder="Select Brand">
+        <option>Select Brand</option>
+        <option>A</option>
+        <option>B</option>
+      </select>
+      <input placeholder="Enter Part Number">
+      <button id="button"><i class="fa fa-search"></i></button>
+    </div>
+    <div id="info">
+      <p>Advance search | Upload Dead Stock</p>
+    </div>
+  </div>
+  <div id="panel2" class="container-fluid">
+    <h1>Section 2</h1>
+    <button id="button2">Sect</button>
+    <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+      the navigation bar while scrolling!</p>
+    <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+      the navigation bar while scrolling!</p>
+  </div>
+  <div id="panel3" class="container-fluid">
+    <a name="3"></a>
+    <h1>Section 3</h1>
+    <!-- Left and right controls -->
+
+  </div>
+
+  </div>
+  <div id="panel4" class="container-fluid">
+    <a name="4"></a>
+    <h1>Section 4</h1>
+  </div>
+  <div id="panel5" class="container-fluid">
+  </div>
+  <script>
+    function myscroll(event) {
+      var div1y = $('#panel1').offset().top,
+        div2y = $('#panel2').offset().top,
+        div3y = $('#panel3').offset().top,
+        div4y = $('#panel4').offset().top,
+        div5y = $('#panel5').offset().top,
+        lastScrollTop = $(this).scrollTop(),
+        scrollDirection,
+        // for determining the previous and next divs to scroll to, based on lastScrollTop:
+        targetUp,
+        targetDown,
+        // for determining which of targetUp or targetDown to scroll to, based on scrollDirection:
+        targetElement;
+
+      var y = event.deltaY;
+
+      if (lastScrollTop === div1y) {
+        targetUp = div1y;
+        targetDown = div2y;
+      } else if (lastScrollTop === div2y) {
+        targetUp = div1y;
+        targetDown = div3y;
+      } else if (lastScrollTop === div3y) {
+        targetUp = div2y;
+        targetDown = div4y;
+      } else if (lastScrollTop === div4y) {
+        targetUp = div3y;
+        targetDown = div5y;
+      } 
+      else if(lastScrollTop == div5y){
+        targetUp =div4y;
+        targetDown = div5y;
+      }else if (lastScrollTop < div2y) {
+        targetUp = div1y;
+        targetDown = div2y;
+      } else if (lastScrollTop < div3y) {
+        targetUp = div2y;
+        targetDown = div3y;
+      } else if (lastScrollTop < div4y) {
+        targetUp = div3y;
+        targetDown = div4y;
+      } else if (lastScrollTop < div5y) {
+        targetUp = div4y;
+        targetDown = div5y;
+      }else if(lastScrollTop > div5y){
+        targetUp = div5y;
+        targetDown =div5y;
+      }
+
+      if (y > 0) {
+        targetElement = targetDown;
+      } else if (y <= 0) {
+        targetElement = targetUp;
+      }
+      scrollThere(targetElement, 400);
+    }
+
+    function scrollThere(targetElement, speed) {
+      // initiate an animation to a certain page element:
+      $('html').stop().animate(
+        { scrollTop: targetElement }, // move window so target element is at top of window
+        speed, // speed in milliseconds
+        'swing' // easing
+      ); // end animate
+    }
+
+  </script>
+</body>
+
+</html>
