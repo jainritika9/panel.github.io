@@ -36,7 +36,7 @@
       <p>Advance search | Upload Dead Stock</p>
     </div>
   </div>
-  <div id="panel2" class="container-fluid">
+  <div id="panel2" class="panel">
     <h1>Section 2</h1>
     <button id="button2">Sect</button>
     <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
@@ -44,19 +44,17 @@
     <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
       the navigation bar while scrolling!</p>
   </div>
-  <div id="panel3" class="container-fluid">
+  <div id="panel3" class="panel">
     <a name="3"></a>
     <h1>Section 3</h1>
-    <!-- Left and right controls -->
-
   </div>
 
   </div>
-  <div id="panel4" class="container-fluid">
+  <div id="panel4" class="panel">
     <a name="4"></a>
     <h1>Section 4</h1>
   </div>
-  <div id="panel5" class="container-fluid">
+  <div id="panel5" class="panel">
   </div>
   <script>
     function myscroll(event) {
@@ -113,18 +111,33 @@
       } else if (y <= 0) {
         targetElement = targetUp;
       }
-      scrollThere(targetElement, 400);
+      scrollThere(targetElement, 10);
     }
 
     function scrollThere(targetElement, speed) {
       // initiate an animation to a certain page element:
       $('html').stop().animate(
         { scrollTop: targetElement }, // move window so target element is at top of window
-        speed, // speed in milliseconds
-        'swing' // easing
+        "slow", // speed in milliseconds
+        'linear' // easing
       ); // end animate
     }
+    
+var time = 2000;//milliseconds
+var index = 0;
+var container = $("#container");
+var childrenCount = $(".section").length;
+function slideToNext() {
 
+    index = (index + 1) % childrenCount;
+    console.log(index);
+    container.css({
+        marginLeft: -1 * index * 100 + "%"
+    })
+}
+var pt = window.setInterval(function() {
+    slideToNext();
+}, time)
   </script>
 </body>
 
