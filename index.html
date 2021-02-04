@@ -111,15 +111,15 @@
       } else if (y <= 0) {
         targetElement = targetUp;
       }
-      scrollThere(targetElement, 10);
+      scrollThere(targetElement, 400);
     }
 
     function scrollThere(targetElement, speed) {
       // initiate an animation to a certain page element:
       $('html').stop().animate(
         { scrollTop: targetElement }, // move window so target element is at top of window
-        "slow", // speed in milliseconds
-        'linear' // easing
+        speed,// speed in milliseconds
+       'linear'// easing
       ); // end animate
     }
     
